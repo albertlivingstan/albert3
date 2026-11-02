@@ -43,7 +43,7 @@ export default async function handler(req, res) {
             data: { name, email, message },
             workflow: { input: { name, email, message } },
             timestamp: new Date().toISOString(),
-            source: 'albertsimpleportfolio'
+            source: 'albert3.vercel.app'
           })
         });
 
