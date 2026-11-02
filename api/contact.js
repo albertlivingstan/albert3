@@ -20,7 +20,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Name, email, and message are required' });
     }
 
-    const webhookUrl = process.env.UIPATH_WEBHOOK_URL || 'https://cloud.uipath.com/studedhebskx/b38edefe-d261-4b6f-aacd-6825cc0a3788/elements_/v1/webhooks/events/aCwhc--U8PlVk_K40ijLAEs4wEgUlCgqmb_TsUHOP9wWGJ-1a_9fVyWIB0pNnB84_q9YDy-dLIYq4ZtWqgFunQ';
+    const webhookUrl = process.env.UIPATH_WEBHOOK_URL || 'https://cloud.uipath.com/studedhebskx/b38edefe-d261-4b6f-aacd-6825cc0a3788/elements_/v1/webhooks/events/jENR8UYMjIXIyRK9gUi1Y2tlWUs8m8KXx0xkPDJddWckIqmz_yNideIggty-SmPS5erbpvCGumKe1nlPNjEGcQ';
     const webhookSecret = process.env.UIPATH_WEBHOOK_SECRET || 'AlbertPortfolio2026SecureKey';
 
     let uipathTriggered = false;
