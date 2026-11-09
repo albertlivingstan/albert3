@@ -39,29 +39,66 @@ export default function Home() {
   async function sendMessage(e) {
     e.preventDefault();
     const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form));
-    if (![data.name, data.email, data.message].every(v => v?.trim())) { setFormStatus({ type: 'error', message: 'Please enter your name, email, and message.' }); return; }
+    const rawData = Object.fromEntries(new FormData(form));
+    const name = rawData.name?.trim() || '';
+    const email = rawData.email?.trim().toLowerCase() || '';
+    const message = rawData.message?.trim() || '';
+
+    // Client-side validations
+    if (name.length < 2) {
+      setFormStatus({ type: 'error', message: 'Please enter your name (at least 2 characters).' });
+      return;
+    }
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      setFormStatus({ type: 'error', message: 'Please enter a valid email address.' });
+      return;
+    }
+    if (message.length < 10) {
+      setFormStatus({ type: 'error', message: 'Please enter a message with at least 10 characters.' });
+      return;
+    }
+
+    // Check client-side block status
+    const localBlockedUntil = Number(localStorage.getItem(`blocked_contact_${email}`) || 0);
+    if (localBlockedUntil && Date.now() < localBlockedUntil) {
+      const remainingMinutes = Math.ceil((localBlockedUntil - Date.now()) / (1000 * 60));
+      const hours = Math.floor(remainingMinutes / 60);
+      const mins = remainingMinutes % 60;
+      const timeStr = hours > 0 ? `${hours}h ${mins}m` : `${mins} minute(s)`;
+      setFormStatus({ type: 'error', message: `Please don't spam! This email is blocked for 12 hours. Please try again in ${timeStr}.` });
+      return;
+    }
+
     setFormStatus({ type: 'sending', message: 'Sending your message…' });
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ name, email, message }),
         signal: AbortSignal.timeout(15000)
       });
       const result = await response.json().catch(() => ({}));
-      if (!response.ok && !result.success) {
-        await fetch('https://formsubmit.co/ajax/albertlivingstan73@gmail.com', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ ...data, _subject: `Portfolio enquiry from ${data.name}`, _template: 'table' }),
-          signal: AbortSignal.timeout(15000)
+
+      if (!response.ok) {
+        if (response.status === 429) {
+          localStorage.setItem(`blocked_contact_${email}`, String(Date.now() + 12 * 60 * 60 * 1000));
+        }
+        setFormStatus({
+          type: 'error',
+          message: result.error || 'Unable to deliver your message. Please try again later.'
         });
+        return;
       }
+
       setFormStatus({ type: 'success', message: 'Your message was submitted. Thank you for reaching out!' });
       form.reset();
-      Promise.all([import('../firebase'), import('firebase/firestore')]).then(([{ db }, { addDoc, collection, serverTimestamp }]) => db ? addDoc(collection(db, 'contacts'), { ...data, createdAt: serverTimestamp() }) : null).catch(() => {});
-    } catch { setFormStatus({ type: 'error', message: 'Delivery could not be confirmed. Please email me directly or try again.' }); }
+      Promise.all([import('../firebase'), import('firebase/firestore')])
+        .then(([{ db }, { addDoc, collection, serverTimestamp }]) => db ? addDoc(collection(db, 'contacts'), { name, email, message, createdAt: serverTimestamp() }) : null)
+        .catch(() => {});
+    } catch {
+      setFormStatus({ type: 'error', message: 'Delivery could not be confirmed. Please email me directly or try again.' });
+    }
   }
   const filtered = projectsData.filter(p => filter === 'All work' || categoryFor(p) === filter);
   return <><Nav /><main id="main"><section id="home" className="hero section"><Spotlight fill="#bce5c3" /><div className="hero-grid"><div className="hero-copy"><Reveal><div className="availability"><i /> Open to developer opportunities</div><p className="hero-intro">Hello, I’m Albert Livingstan G.</p><h1>Thoughtful code.<br />Meaningful<br /><span>experiences.</span></h1><p className="hero-description">A computer science student building at the intersection of web development, AI, and the real world.</p><div className="button-row"><a className="button primary" href="#projects">Explore my work <ArrowDown size={17} /></a><a className="button" href={resume} download><Download size={17} /> Download résumé</a></div><div className="hero-socials"><a href="https://github.com/albertlivingstan" target="_blank" rel="noreferrer"><Github size={17} /> GitHub <ArrowUpRight size={13} /></a><a href="https://www.linkedin.com/in/albert-livingstan-g" target="_blank" rel="noreferrer"><Linkedin size={17} /> LinkedIn <ArrowUpRight size={13} /></a><span><MapPin size={15} /> Tamil Nadu, India</span></div></Reveal></div><Reveal className="hero-visual" delay={.15}><div className="portrait-frame"><img src="/portrait.webp" width="800" height="800" fetchPriority="high" alt="Albert Livingstan G wearing a navy blazer" /><div className="portrait-shade" /><div className="portrait-caption"><span>ALBERT LIVINGSTAN G</span><p>Developer. Explorer.<br />Always a student.</p></div><button className="intro-button" aria-label="Watch introduction video" onClick={() => setIntro(true)}><Play size={17} fill="currentColor" /></button></div><div className="floating-note"><span className="note-icon"><Code2 size={21} /></span><div>From curiosity to code.<small>Web · AI · IoT</small></div><span className="note-star">✳</span></div></Reveal></div><div className="hero-bottom"><span>SELECTED WORK & EXPLORATIONS</span><a href="#projects">Scroll to discover <ArrowDown size={14} /></a><span>PORTFOLIO / 2026</span></div></section>
