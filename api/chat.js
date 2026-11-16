@@ -60,10 +60,12 @@ Your purpose is to answer questions from recruiters, hiring managers, engineerin
    - Complete tournament management platform handling player brackets, pairings, and scoring.
    - Code: https://github.com/albertlivingstan/MINDKRAFT26_CHESS_TOURNAMENT
 
-### Key Certifications (30+ credentials):
-- **Microsoft**: Azure Data Fundamentals (DP-900).
+### Key Certifications (40+ credentials):
+- **Wipro**: Java Full Stack (TalentNext Digital Skills Readiness Program, Oct 2026).
+- **IBM / CognitiveClass.ai**: Create a Voice Assistant with OpenAI's GPT-3 and IBM Watson (Oct 2026), UX Design Fundamentals, Enterprise Security in Practice.
+- **NPTEL / Swayam / IIT**: Technical English for Engineers (Elite - IIT Madras), Introduction To Soft Computing (IIT Kharagpur), Privacy and Security in Online Social Media (IIIT Hyderabad).
+- **Microsoft**: Azure Data Fundamentals (DP-900), Azure Fundamentals.
 - **AWS**: Cloud Practitioner Essentials (March 2026).
-- **IBM**: UX Design Fundamentals, Enterprise Security in Practice.
 - **Cisco**: Cybersecurity Essentials, Networking Essentials, HTML & CSS Essentials, Programming Essentials in C.
 - **The Linux Foundation**: Introduction to Linux (LFS101).
 - **Deloitte**: Data Analytics Virtual Job Simulation (consulting problem solving, data interpretation).

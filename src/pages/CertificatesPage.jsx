@@ -3,7 +3,7 @@ import { useLocation, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { certificates } from '../data';
 import { Nav, Footer, Dialog, Reveal } from '../components/PortfolioUI';
-const category = c => /azure|aws|cloud|linux|network|packet/i.test(c.title) ? 'Cloud & systems' : /data|ai|intelligence|learning|prompt|chatbot|mongo|sql/i.test(c.title) ? 'AI & data' : /hack|challenge|sih/i.test(c.title) ? 'Hackathons' : 'Software & skills';
+const category = c => /azure|aws|cloud|linux|network|packet/i.test(c.title) ? 'Cloud & systems' : /data|ai|intelligence|learning|prompt|chatbot|mongo|sql|soft computing|gpt|watson|voice/i.test(c.title) ? 'AI & data' : /hack|challenge|sih/i.test(c.title) ? 'Hackathons' : 'Software & skills';
 export default function CertificatesPage() {
   const location = useLocation();
   const [search, setSearch] = useState(location.state?.search || '');

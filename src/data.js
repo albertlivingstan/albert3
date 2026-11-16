@@ -1,5 +1,30 @@
 export const certificates = [
   {
+    "img": "images/JFS(wipro).png",
+    "title": "Java Full Stack (Wipro TalentNext)",
+    "date": "Completed on October 2026"
+  },
+  {
+    "img": "images/Create a Voice Assistant with OpenAI's GPT-3 and IBMWatson.png",
+    "title": "Create a Voice Assistant with OpenAI's GPT-3 and IBM Watson",
+    "date": "Completed on October 22, 2026"
+  },
+  {
+    "img": "images/Technical English for Engineers.png",
+    "title": "Technical English for Engineers (NPTEL Elite - IIT Madras)",
+    "date": "Completed on October 2024"
+  },
+  {
+    "img": "images/Privacy and Security in Online Social Media.png",
+    "title": "Privacy and Security in Online Social Media (NPTEL - IIIT Hyderabad)",
+    "date": "Completed on October 2025"
+  },
+  {
+    "img": "images/Introduction To Soft Computing.png",
+    "title": "Introduction To Soft Computing (NPTEL - IIT Kharagpur)",
+    "date": "Completed on March 2025"
+  },
+  {
     "img": "images/Azure Data..png",
     "title": "Microsoft Azure Data Fundamentals",
     "date": "Issued on October 15, 2025"

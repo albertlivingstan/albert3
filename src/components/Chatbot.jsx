@@ -88,7 +88,22 @@ const KB = [
   // ── Certifications ──
   {
     keys: ['certificate', 'certification', 'certified', 'course', 'badge', 'credential'],
-    reply: "Albert has earned 30+ certifications from top institutions! 🏆\n\n🔷 Microsoft – Azure Data Fundamentals\nDownload resume IBM – UX Design Fundamentals & Enterprise Security\n🟠 AWS – Cloud Practitioner Essentials\n🔴 Google – Digital Marketing & E-commerce\n🔶 Cisco – HTML, CSS, Networking Essentials\n📊 MongoDB, Machine Learning, Linux, and many more!\n\nVisit the Certificates page to see them all."
+    reply: "Albert has earned 40+ certifications from top institutions! 🏆\n\n💼 Wipro – Java Full Stack (TalentNext, Oct 2026)\n🤖 IBM / CognitiveClass – Voice Assistant with OpenAI GPT-3 & Watson (Oct 2026)\n🏛️ NPTEL / IIT – Technical English (Elite, IIT Madras), Soft Computing (IIT Kharagpur), Privacy & Security in Social Media (IIIT Hyderabad)\n🔷 Microsoft – Azure Data Fundamentals & Azure Fundamentals\n🟠 AWS – Cloud Practitioner Essentials\n🔴 Google – Digital Marketing & E-commerce, Prompt Engineering\n🔶 Cisco – HTML, CSS, Networking, Cybersecurity Essentials\n\nVisit the Certificates page to view them all!"
+  },
+  // ── Wipro ──
+  {
+    keys: ['wipro', 'jfs', 'java full stack', 'talentnext'],
+    reply: "Albert completed the prestigious Wipro TalentNext Digital Skills Readiness Program on Java Full Stack (July–Oct 2026), mastering enterprise Java, object-oriented software engineering, and modern full-stack web architectures! 💼✨"
+  },
+  // ── Voice Assistant / Watson / GPT-3 ──
+  {
+    keys: ['voice assistant', 'watson', 'gpt-3', 'gpt', 'openai voice'],
+    reply: "Albert is certified by IBM Skills Network and CognitiveClass.ai in 'Create a Voice Assistant with OpenAI's GPT-3 and IBM Watson' (Oct 2026), building conversational voice bots powered by LLMs and speech synthesis! 🎙️🤖"
+  },
+  // ── NPTEL / IIT ──
+  {
+    keys: ['nptel', 'swayam', 'iit', 'soft computing'],
+    reply: "Albert has earned multiple NPTEL / IIT certifications:\n\n1️⃣ Technical English for Engineers (Elite - IIT Madras)\n2️⃣ Introduction To Soft Computing (IIT Kharagpur)\n3️⃣ Privacy and Security in Online Social Media (IIIT Hyderabad)\n\nDemonstrating strong theoretical and research-backed foundations! 🏛️📚"
   },
   // ── Microsoft ──
   {
